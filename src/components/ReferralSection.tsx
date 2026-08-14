@@ -1,5 +1,4 @@
 ﻿import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Copy, Check, Users, Sparkles, Share2, ShieldCheck, Gift } from 'lucide-react';
 
 interface ReferralSectionProps {
@@ -58,16 +57,10 @@ export const ReferralSection: React.FC<ReferralSectionProps> = ({
 
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-14">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00F0FF]/10 border border-cyan-500/30 text-[#00F0FF] text-xs font-semibold uppercase tracking-widest mb-3"
-        >
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00F0FF]/10 border border-cyan-500/30 text-[#00F0FF] text-xs font-semibold uppercase tracking-widest mb-3">
           <Gift className="w-3.5 h-3.5" />
           <span>Referral Program</span>
-        </motion.div>
+        </div>
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
           INVITE FRIENDS. <span className="text-[#00F0FF] text-cyan-glow">GET 6,250 CVR ($487) REWARDS.</span>
@@ -84,12 +77,8 @@ export const ReferralSection: React.FC<ReferralSectionProps> = ({
           {perks.map((perk, idx) => {
             const PerkIcon = perk.icon;
             return (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
                 className="flex items-start gap-4 p-4 rounded-2xl glass-card border border-cyan-500/20 hover:border-cyan-500/40 transition-all"
               >
                 <div className="w-10 h-10 rounded-xl bg-[#00F0FF]/15 border border-cyan-500/30 flex items-center justify-center text-[#00F0FF] shrink-0">
@@ -103,20 +92,14 @@ export const ReferralSection: React.FC<ReferralSectionProps> = ({
                     {perk.desc}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
         {/* Right Column: Promotional Card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="lg:col-span-7"
-        >
-          <div className="glass-panel p-8 rounded-3xl border border-cyan-500/40 shadow-2xl relative overflow-hidden bg-gradient-to-br from-[#0B1120] via-[#05070D] to-[#0A1A2E]">
+        <div className="lg:col-span-7">
+          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-cyan-500/40 shadow-2xl relative overflow-hidden bg-gradient-to-br from-[#0B1120] via-[#05070D] to-[#0A1A2E]">
             {/* Ambient overlay */}
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#00F0FF_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
 
@@ -142,12 +125,12 @@ export const ReferralSection: React.FC<ReferralSectionProps> = ({
                 <label className="text-[10px] font-bold text-cyan-400 uppercase tracking-widest block">
                   YOUR UNIQUE REFERRAL LINK
                 </label>
-                <div className="flex flex-col sm:flex-row items-center gap-3 p-2 bg-[#05070D]/90 rounded-2xl border border-cyan-500/30">
+                <div className="flex flex-col sm:flex-row items-center gap-3 p-2 bg-[#05070D]/90 rounded-2xl border border-cyan-500/30 overflow-hidden">
                   <input
                     type="text"
                     readOnly
                     value={refLink}
-                    className="w-full bg-transparent px-3 py-2 text-xs font-mono text-cyan-300 focus:outline-none select-all"
+                    className="w-full bg-transparent px-3 py-2 text-xs font-mono text-cyan-300 focus:outline-none select-all truncate"
                   />
                   <button
                     onClick={handleCopy}
@@ -167,7 +150,7 @@ export const ReferralSection: React.FC<ReferralSectionProps> = ({
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

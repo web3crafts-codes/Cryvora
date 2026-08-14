@@ -1,5 +1,4 @@
 ﻿import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Award, ShieldCheck, Activity } from 'lucide-react';
 
 interface ClaimEntry {
@@ -94,7 +93,7 @@ export const LeaderboardSection: React.FC<LeaderboardSectionProps> = ({
           rank: index + 1,
         }));
       });
-    }, 10000); // 10 seconds
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);
@@ -115,16 +114,10 @@ export const LeaderboardSection: React.FC<LeaderboardSectionProps> = ({
 
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-14">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00F0FF]/10 border border-cyan-500/30 text-[#00F0FF] text-xs font-semibold uppercase tracking-widest mb-3"
-        >
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00F0FF]/10 border border-cyan-500/30 text-[#00F0FF] text-xs font-semibold uppercase tracking-widest mb-3">
           <ShieldCheck className="w-3.5 h-3.5" />
           <span>On-Chain Transparency</span>
-        </motion.div>
+        </div>
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
           LIVE CLAIM <span className="text-[#00F0FF] text-cyan-glow">TRANSACTIONS</span>
@@ -148,7 +141,7 @@ export const LeaderboardSection: React.FC<LeaderboardSectionProps> = ({
         </div>
 
         <div className="flex items-center gap-2 text-xs font-mono text-cyan-300 bg-[#00F0FF]/10 px-3 py-1.5 rounded-full border border-cyan-500/20">
-          <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-ping" />
+          <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse" />
           <Activity className="w-3.5 h-3.5 text-[#00F0FF]" />
           <span>LIVE CHAIN SYNC ACTIVE (10s LOOP)</span>
         </div>
@@ -168,53 +161,49 @@ export const LeaderboardSection: React.FC<LeaderboardSectionProps> = ({
               </tr>
             </thead>
             <tbody className="divide-y divide-cyan-500/10 text-xs">
-              <AnimatePresence mode="popLayout">
-                {filteredEntries.map((row) => {
-                  const isCurrentUser =
-                    isConnected &&
-                    userAddress &&
-                    row.user.toLowerCase() === userAddress.toLowerCase();
+              {filteredEntries.map((row) => {
+                const isCurrentUser =
+                  isConnected &&
+                  userAddress &&
+                  row.user.toLowerCase() === userAddress.toLowerCase();
 
-                  return (
-                    <motion.tr
-                      key={row.txHash}
-                      initial={{ opacity: 0, y: -20, backgroundColor: 'rgba(0, 240, 255, 0.25)' }}
-                      animate={{ opacity: 1, y: 0, backgroundColor: isCurrentUser ? 'rgba(0, 240, 255, 0.15)' : 'rgba(0, 0, 0, 0)' }}
-                      exit={{ opacity: 0, y: 20 }}
-                      transition={{ duration: 0.6 }}
-                      className="transition-colors hover:bg-cyan-500/5"
-                    >
-                      <td className="py-4 px-6 text-center font-extrabold font-mono text-cyan-300">
-                        #{row.rank}
-                      </td>
-                      <td className="py-4 px-6 font-mono text-slate-400">
-                        {formatTxHash(row.txHash)}
-                      </td>
-                      <td className="py-4 px-6 font-mono text-slate-200 font-bold">
-                        <div className="flex items-center gap-2">
-                          <span>{formatAddress(row.user)}</span>
-                          {isCurrentUser && (
-                            <span className="text-[10px] font-bold text-[#05070D] bg-[#00F0FF] px-2 py-0.5 rounded-full uppercase">
-                              You
-                            </span>
-                          )}
-                        </div>
-                      </td>
-                      <td className="py-4 px-6 text-center">
-                        <span className="inline-flex items-center gap-1 font-bold font-mono text-[#00F0FF] bg-[#00F0FF]/10 px-3 py-1 rounded-lg border border-cyan-500/20">
-                          <Award className="w-3.5 h-3.5" />
-                          {row.amount}
-                        </span>
-                      </td>
-                      <td className="py-4 px-6 text-center">
-                        <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 uppercase tracking-wider">
-                          {row.status}
-                        </span>
-                      </td>
-                    </motion.tr>
-                  );
-                })}
-              </AnimatePresence>
+                return (
+                  <tr
+                    key={row.txHash}
+                    className={`transition-colors ${
+                      isCurrentUser ? 'bg-[#00F0FF]/15' : 'hover:bg-cyan-500/5'
+                    }`}
+                  >
+                    <td className="py-4 px-6 text-center font-extrabold font-mono text-cyan-300">
+                      #{row.rank}
+                    </td>
+                    <td className="py-4 px-6 font-mono text-slate-400">
+                      {formatTxHash(row.txHash)}
+                    </td>
+                    <td className="py-4 px-6 font-mono text-slate-200 font-bold">
+                      <div className="flex items-center gap-2">
+                        <span>{formatAddress(row.user)}</span>
+                        {isCurrentUser && (
+                          <span className="text-[10px] font-bold text-[#05070D] bg-[#00F0FF] px-2 py-0.5 rounded-full uppercase">
+                            You
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <span className="inline-flex items-center gap-1 font-bold font-mono text-[#00F0FF] bg-[#00F0FF]/10 px-3 py-1 rounded-lg border border-cyan-500/20">
+                        <Award className="w-3.5 h-3.5" />
+                        {row.amount}
+                      </span>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 uppercase tracking-wider">
+                        {row.status}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

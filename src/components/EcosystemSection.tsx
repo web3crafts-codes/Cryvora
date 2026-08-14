@@ -1,96 +1,107 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+﻿import React from 'react';
+import { ShieldCheck, Zap, Coins, Globe, ArrowUpRight } from 'lucide-react';
 
 export const EcosystemSection: React.FC = () => {
   const cards = [
     {
-      title: 'EARN & GROW',
-      desc: 'Complete tasks, join missions, and earn $CVR rewards.',
-      image: '/assets/cry_ecosystem_1.png',
-      badge: 'STAKING & MISSIONS',
+      badge: 'TOKEN REWARDS',
+      title: 'EARN & GROW WITH CRYVORA',
+      desc: 'Participate in our Genesis Airdrop and Referral multiplier pools. 100% transparent and claimable on-chain.',
+      image: '/assets/cry_ecosystem_1.jpg',
+      icon: Coins,
     },
     {
-      title: 'BUILT FOR THE FUTURE',
-      desc: 'Cryvora is building real utilities for real-world impact.',
-      image: '/assets/cry_ecosystem_2.png',
-      badge: 'ANALYTICS & UTILITY',
+      badge: 'NEXT-GEN TECH',
+      title: 'BUILT FOR THE FUTURE OF WEB3',
+      desc: 'Powered by BNB Smart Chain infrastructure ensuring near-zero gas fees, sub-second latency, and maximum security.',
+      image: '/assets/cry_ecosystem_2.jpg',
+      icon: Zap,
     },
     {
-      title: 'DECENTRALIZED',
-      desc: 'Powered by the community, for the community.',
-      image: '/assets/cry_ecosystem_3.png',
-      badge: 'OPEN INFRASTRUCTURE',
+      badge: 'DECENTRALIZED',
+      title: 'COMMUNITY GOVERNANCE',
+      desc: 'Cryvora gives voting power and staking rewards to $CVR holders. Shape the protocol’s future direction.',
+      image: '/assets/cry_ecosystem_3.jpg',
+      icon: ShieldCheck,
     },
     {
-      title: 'REWARDS FOR ALL',
-      desc: 'Fair. Transparent. Sustainable. Rewards for everyone.',
-      image: '/assets/cry_ecosystem_4.png',
-      badge: 'FAIR DISTRIBUTION',
+      badge: 'GLOBAL REACH',
+      title: 'BORDERLESS DEFI ECOSYSTEM',
+      desc: 'Seamlessly access DEX liquidity, yield farming, and NFT utility across multiple chain ecosystems.',
+      image: '/assets/cry_ecosystem_4.jpg',
+      icon: Globe,
     },
   ];
 
   return (
-    <section id="ecosystem" className="relative py-24 px-4 sm:px-8 w-full max-w-[1440px] mx-auto z-10">
-      
-      {/* Title */}
-      <div className="text-center max-w-2xl mx-auto mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00F0FF]/10 border border-cyan-500/30 text-[#00F0FF] text-xs font-semibold uppercase tracking-widest mb-3"
-        >
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Core Infrastructure</span>
-        </motion.div>
+    <section id="ecosystem" className="relative py-20 px-4 sm:px-8 w-full max-w-[1440px] mx-auto z-10">
+      {/* Ambient background glow */}
+      <div className="absolute right-0 top-1/4 w-[400px] h-[400px] bg-[#00F0FF]/10 rounded-full blur-[140px] pointer-events-none" />
+
+      {/* Header */}
+      <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00F0FF]/10 border border-cyan-500/30 text-[#00F0FF] text-xs font-semibold uppercase tracking-widest mb-3">
+          <Zap className="w-3.5 h-3.5" />
+          <span>Ecosystem & Utilities</span>
+        </div>
 
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-          THE <span className="text-[#00F0FF] text-cyan-glow">CRYVORA ECOSYSTEM</span>
+          DISCOVER THE <span className="text-[#00F0FF] text-cyan-glow">CRYVORA ECOSYSTEM</span>
         </h2>
+        <p className="text-sm text-slate-300 mt-3 leading-relaxed">
+          High-yield Web3 infrastructure designed to deliver maximum value, speed, and security for crypto enthusiasts.
+        </p>
       </div>
 
       {/* 4 Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {cards.map((card, idx) => (
-          <motion.div
-            key={card.title}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: idx * 0.15, duration: 0.6 }}
-            className="glass-card p-6 rounded-3xl border border-cyan-500/20 flex flex-col justify-between items-center text-center relative group overflow-hidden"
-          >
-            {/* Ambient inner glow on hover */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#00F0FF]/0 via-[#00F0FF]/0 to-[#00F0FF]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {cards.map((card, idx) => {
+          const CardIcon = card.icon;
+          return (
+            <div
+              key={idx}
+              className="glass-panel p-6 rounded-3xl border border-cyan-500/20 hover:border-cyan-500/50 transition-all flex flex-col justify-between group relative overflow-hidden"
+            >
+              <div className="space-y-4">
+                {/* Image Showcase */}
+                <div className="relative w-full h-44 rounded-2xl overflow-hidden bg-[#05070D]">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 left-3 z-20 px-3 py-1 rounded-full bg-[#05070D]/80 backdrop-blur-md border border-cyan-500/30 text-[10px] font-bold text-[#00F0FF] uppercase tracking-wider">
+                    {card.badge}
+                  </div>
+                </div>
 
-            {/* Top Badge */}
-            <span className="text-[10px] font-extrabold text-[#00F0FF] tracking-wider uppercase mb-4 px-3 py-1 rounded-full bg-[#05070D]/80 border border-cyan-500/20">
-              {card.badge}
-            </span>
+                <div className="flex items-center gap-2 text-[#00F0FF]">
+                  <CardIcon className="w-4 h-4" />
+                  <span className="text-xs font-bold uppercase tracking-wider">Utility #{idx + 1}</span>
+                </div>
 
-            {/* Ecosystem Image Card */}
-            <div className="relative w-full h-44 flex items-center justify-center my-2 rounded-2xl overflow-hidden border border-cyan-500/20 group-hover:border-cyan-500/50 transition-all duration-300">
-              <div className="absolute inset-0 bg-[#00F0FF]/10 blur-xl group-hover:bg-[#00F0FF]/25 transition-all duration-300" />
-              <img
-                src={card.image}
-                alt={card.title}
-                className="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-500 shadow-md"
-              />
+                <h3 className="text-lg font-extrabold text-white group-hover:text-[#00F0FF] transition-colors leading-snug">
+                  {card.title}
+                </h3>
+
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  {card.desc}
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-cyan-500/10 flex items-center justify-between mt-4">
+                <span className="text-[11px] font-bold text-slate-400 group-hover:text-white transition-colors">
+                  Learn More
+                </span>
+                <div className="w-8 h-8 rounded-full bg-[#00F0FF]/10 flex items-center justify-center text-[#00F0FF] group-hover:bg-[#00F0FF] group-hover:text-[#05070D] transition-all">
+                  <ArrowUpRight className="w-4 h-4" />
+                </div>
+              </div>
             </div>
-
-            {/* Content Text */}
-            <div className="mt-4 space-y-2 relative z-10">
-              <h3 className="text-base font-extrabold text-white tracking-wider">
-                {card.title}
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed font-normal">
-                {card.desc}
-              </p>
-            </div>
-          </motion.div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

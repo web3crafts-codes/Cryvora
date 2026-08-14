@@ -1,142 +1,125 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Package, Gift, TrendingUp, Share2, ShieldCheck } from 'lucide-react';
+﻿import React from 'react';
+import { Rocket, CheckCircle2, Circle } from 'lucide-react';
 
 export const RoadmapSection: React.FC = () => {
-  const milestones = [
+  const phases = [
     {
-      quarter: 'Q1 2024',
-      title: 'PROJECT LAUNCH',
-      desc: 'Build community & create awareness',
-      icon: Package,
-      active: true,
+      phase: 'PHASE 01',
+      title: 'Genesis Launch & Airdrop',
+      status: 'Completed',
+      items: [
+        'Smart contract audit & deployment',
+        'Genesis Airdrop campaign live',
+        'Referral reward program activation',
+        'Web3 wallet integration & BSC sync',
+      ],
     },
     {
-      quarter: 'Q2 2024',
-      title: 'AIRDROP CAMPAIGN',
-      desc: 'Distribute $CVR to early supporters',
-      icon: Gift,
-      active: true,
+      phase: 'PHASE 02',
+      title: 'Exchange Listing & Liquidity',
+      status: 'In Progress',
+      items: [
+        'PancakeSwap & DEX listings',
+        'Tier-2 CEX listings & market making',
+        'CoinMarketCap & CoinGecko indexing',
+        'Liquidity lock & governance portal',
+      ],
     },
     {
-      quarter: 'Q3 2024',
-      title: 'LISTING & PARTNERSHIPS',
-      desc: 'List $CVR and onboard strategic partners',
-      icon: TrendingUp,
-      active: false,
-    },
-    {
-      quarter: 'Q4 2024',
-      title: 'ECOSYSTEM EXPANSION',
-      desc: 'Launch utilities and grow the ecosystem',
-      icon: Share2,
-      active: false,
-    },
-    {
-      quarter: '2025+',
-      title: 'GLOBAL ADOPTION',
-      desc: 'Mass adoption & real-world impact',
-      icon: ShieldCheck,
-      active: false,
+      phase: 'PHASE 03',
+      title: 'Ecosystem Expansion',
+      status: 'Upcoming',
+      items: [
+        'Staking & Yield farming pools',
+        'Cross-chain bridge deployment',
+        'NFT Utility passes & marketplace',
+        'Cryvora Mobile Web3 App launch',
+      ],
     },
   ];
 
   return (
-    <section id="roadmap" className="relative py-20 px-4 sm:px-8 w-full max-w-[1440px] mx-auto z-10 overflow-hidden">
-      
-      {/* Title Header (Left-aligned matching reference design) */}
-      <div className="text-left mb-12">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-          OUR <span className="text-[#00F0FF] text-cyan-glow">ROADMAP</span>
-        </h2>
-      </div>
+    <section id="roadmap" className="relative py-20 px-4 sm:px-8 w-full max-w-[1440px] mx-auto z-10">
+      {/* Background glow */}
+      <div className="absolute left-10 bottom-10 w-[350px] h-[350px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Main Roadmap Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-        
-        {/* Left Side: 5 Milestone Nodes Timeline (8 cols on lg) */}
-        <div className="lg:col-span-8 relative py-6">
-          
-          {/* Blue Dashed Connection Line */}
-          <div className="hidden md:block absolute top-12 left-6 right-6 h-0.5 border-b-2 border-dashed border-[#00F0FF]/50 z-0 shadow-[0_0_12px_rgba(0,240,255,0.8)]" />
-
-          {/* 5 Milestones Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 relative z-10">
-            {milestones.map((m, idx) => {
-              const Icon = m.icon;
-              return (
-                <motion.div
-                  key={m.quarter}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
-                  className="flex flex-col items-center text-center group"
-                >
-                  {/* Glowing Milestone Node */}
-                  <div
-                    className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 relative ${
-                      m.active
-                        ? 'bg-[#00F0FF]/20 border-2 border-[#00F0FF] shadow-[0_0_25px_rgba(0,240,255,0.8)] scale-105'
-                        : 'bg-[#05070D]/90 border border-cyan-500/30 group-hover:border-[#00F0FF]/60 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.4)]'
-                    }`}
-                  >
-                    <div className="w-10 h-10 rounded-full bg-[#00F0FF]/15 border border-[#00F0FF]/40 flex items-center justify-center text-[#00F0FF]">
-                      <Icon className="w-5 h-5 stroke-[2.2]" />
-                    </div>
-
-                    {m.active && (
-                      <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#00F0FF] border-2 border-[#05070D] animate-ping" />
-                    )}
-                  </div>
-
-                  {/* Quarter Label */}
-                  <span className="mt-3 text-[10px] font-extrabold text-[#00F0FF] tracking-widest uppercase">
-                    {m.quarter}
-                  </span>
-
-                  {/* Title */}
-                  <h3 className="mt-1 text-xs font-extrabold text-white tracking-wider leading-tight">
-                    {m.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="mt-1 text-[11px] text-slate-400 leading-snug font-normal max-w-[140px]">
-                    {m.desc}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-
+      {/* Header */}
+      <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00F0FF]/10 border border-cyan-500/30 text-[#00F0FF] text-xs font-semibold uppercase tracking-widest mb-3">
+          <Rocket className="w-3.5 h-3.5" />
+          <span>Growth Roadmap</span>
         </div>
 
-        {/* Right Side: Rocket Mascot Image (4 cols on lg) */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="lg:col-span-4 flex items-center justify-center relative"
-        >
-          <motion.div
-            animate={{ y: [-6, 6, -6] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            className="relative w-full flex items-center justify-center"
-          >
-            {/* Ambient Cyan Blur Behind Rocket */}
-            <div className="absolute inset-0 bg-[#00F0FF]/15 rounded-full blur-3xl -z-10" />
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          STRATEGIC <span className="text-[#00F0FF] text-cyan-glow">DEVELOPMENT ROADMAP</span>
+        </h2>
+        <p className="text-sm text-slate-300 mt-3 leading-relaxed">
+          Clear execution strategy to scale Cryvora into a top-tier Web3 decentralized ecosystem.
+        </p>
+      </div>
 
+      {/* Roadmap Content: 3 Phases Left (8 cols) + Rocket Mascot Right (4 cols) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
+        
+        {/* Left Column: 3 Timeline Cards */}
+        <div className="lg:col-span-8 space-y-6">
+          {phases.map((p) => (
+            <div
+              key={p.phase}
+              className="glass-panel p-6 rounded-3xl border border-cyan-500/25 relative overflow-hidden group hover:border-cyan-500/50 transition-all"
+            >
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span className="text-xs font-bold text-[#00F0FF] bg-[#00F0FF]/10 px-3 py-1 rounded-full border border-cyan-500/30 uppercase tracking-widest">
+                  {p.phase}
+                </span>
+                <span
+                  className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider ${
+                    p.status === 'Completed'
+                      ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                      : p.status === 'In Progress'
+                      ? 'bg-[#00F0FF]/20 text-[#00F0FF] border border-cyan-500/30'
+                      : 'bg-slate-700/40 text-slate-400 border border-slate-600/30'
+                  }`}
+                >
+                  {p.status}
+                </span>
+              </div>
+
+              <h3 className="text-xl font-extrabold text-white mb-3">
+                {p.title}
+              </h3>
+
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                {p.items.map((item, itemIdx) => (
+                  <li key={itemIdx} className="flex items-center gap-2">
+                    {p.status === 'Completed' ? (
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    ) : (
+                      <Circle className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                    )}
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Right Column: Rocket Mascot Graphic */}
+        <div className="lg:col-span-4 flex items-center justify-center">
+          <div className="relative w-full max-w-[340px] aspect-square flex items-center justify-center">
+            <div className="absolute inset-0 bg-[#00F0FF]/15 rounded-full blur-3xl" />
             <img
               src="/assets/roadmap_rockets.png"
               alt="Cryvora Roadmap Rocket Mascot"
-              className="w-full max-w-[340px] lg:max-w-[380px] h-auto object-contain drop-shadow-[0_0_40px_rgba(0,240,255,0.5)]"
+              loading="lazy"
+              decoding="async"
+              className="w-full max-w-[340px] lg:max-w-[380px] h-auto object-contain drop-shadow-[0_0_35px_rgba(0,240,255,0.4)] relative z-10"
             />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
       </div>
-
     </section>
   );
 };

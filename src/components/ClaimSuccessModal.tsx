@@ -1,5 +1,4 @@
 ﻿import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { CheckCircle2, Sparkles, X, ArrowRight } from 'lucide-react';
 import { useGateway } from '../hooks/useGateway';
@@ -20,8 +19,8 @@ export const ClaimSuccessModal: React.FC<ClaimSuccessModalProps> = ({
   useEffect(() => {
     if (isOpen) {
       confetti({
-        particleCount: 120,
-        spread: 80,
+        particleCount: 100,
+        spread: 70,
         origin: { y: 0.6 },
         colors: ['#00F0FF', '#00B8D9', '#FFFFFF', '#0A2540'],
       });
@@ -31,13 +30,8 @@ export const ClaimSuccessModal: React.FC<ClaimSuccessModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#05070D]/85 backdrop-blur-lg animate-in fade-in duration-300">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: 30 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.8, y: 30 }}
-        className="w-full max-w-lg glass-panel p-8 rounded-3xl border border-cyan-500/50 shadow-[0_0_50px_rgba(0,240,255,0.3)] relative overflow-hidden text-center"
-      >
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#05070D]/85 backdrop-blur-md">
+      <div className="w-full max-w-lg glass-panel p-8 rounded-3xl border border-cyan-500/50 shadow-[0_0_50px_rgba(0,240,255,0.3)] relative overflow-hidden text-center">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#00F0FF]/20 rounded-full blur-3xl pointer-events-none" />
 
         <button
@@ -95,7 +89,7 @@ export const ClaimSuccessModal: React.FC<ClaimSuccessModalProps> = ({
           <span>RETURN TO HOME</span>
           <ArrowRight className="w-4 h-4 text-[#05070D]" />
         </button>
-      </motion.div>
+      </div>
     </div>
   );
 };

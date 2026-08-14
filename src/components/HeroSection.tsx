@@ -1,5 +1,4 @@
 ﻿import React from 'react';
-import { motion } from 'framer-motion';
 import { ArrowRight, Play, Sparkles, TrendingUp, Plus } from 'lucide-react';
 import { TOKEN_CONTRACT_ADDRESS } from '../hooks/useGateway';
 
@@ -40,16 +39,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onClaimClick, onLearnM
     >
       <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
         
-        {/* LEFT HERO (45% -> 5 cols on lg) */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="lg:col-span-6 flex flex-col items-start space-y-6 text-left"
-        >
+        {/* LEFT HERO (45% -> 6 cols on lg) */}
+        <div className="lg:col-span-6 flex flex-col items-start space-y-6 text-left">
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00F0FF]/10 border border-[#00F0FF]/30 text-[#00F0FF] text-xs font-semibold tracking-wide">
-            <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-ping" />
+            <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse" />
             <Sparkles className="w-3.5 h-3.5 text-[#00F0FF]" />
             <span>GENESIS AIRDROP CAMPAIGN IS LIVE</span>
           </div>
@@ -101,12 +95,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onClaimClick, onLearnM
           </div>
 
           {/* Listing Price Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="glass-panel p-4 rounded-2xl border border-cyan-500/30 w-full sm:w-72 shadow-lg shadow-[#00F0FF]/5 relative overflow-hidden group"
-          >
+          <div className="glass-panel p-4 rounded-2xl border border-cyan-500/30 w-full sm:w-72 shadow-lg shadow-[#00F0FF]/5 relative overflow-hidden group">
             <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-[#00F0FF]/10 rounded-full blur-xl group-hover:bg-[#00F0FF]/25 transition-all" />
             <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
               <TrendingUp className="w-3.5 h-3.5 text-[#00F0FF]" />
@@ -118,23 +107,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onClaimClick, onLearnM
               </span>
               <span className="text-xs font-semibold text-[#00F0FF]">PER CVR</span>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* RIGHT HERO (55% -> 6 cols on lg) */}
         <div className="lg:col-span-6 relative flex items-center justify-end min-h-[480px] pl-4 sm:pl-10 lg:pl-20">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="relative z-10 w-full flex items-center justify-end"
-          >
+          <div className="relative z-10 w-full flex items-center justify-end">
             <img
               src="/assets/hero-section-image.png"
               alt="Cryvora Hero Graphic"
+              loading="eager"
+              decoding="async"
               className="w-full max-w-[520px] h-auto object-contain drop-shadow-[0_0_35px_rgba(0,240,255,0.3)] ml-auto"
             />
-          </motion.div>
+          </div>
         </div>
 
       </div>

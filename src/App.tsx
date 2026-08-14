@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { ClaimSection } from './components/ClaimSection';
@@ -30,16 +30,19 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[url('/assets/hero_bgimage.png')] bg-cover bg-center bg-fixed bg-no-repeat text-slate-100 relative overflow-x-hidden selection:bg-[#00F0FF]/30 selection:text-[#00F0FF]">
+    <div className="min-h-screen bg-[#05070D] text-slate-100 relative overflow-x-hidden selection:bg-[#00F0FF]/30 selection:text-[#00F0FF]">
+      {/* Reliable Fixed Mobile & Desktop Background Image Overlay */}
+      <div className="fixed inset-0 -z-10 bg-[url('/assets/hero_bgimage.jpg')] bg-cover bg-center bg-no-repeat pointer-events-none" />
+
       {/* Real-Time Notification Bar / Toasts */}
       <NotificationBar />
 
-      {/* Floating Header Navbar with RainbowKit Connect Button */}
+      {/* Floating Header Navbar */}
       <Navbar />
 
       {/* Main Content Sections */}
       <main className="relative z-10 space-y-4">
-        {/* 1. Hero Section (100vh) */}
+        {/* 1. Hero Section */}
         <HeroSection
           onClaimClick={scrollToClaim}
           onLearnMoreClick={scrollToEcosystem}
@@ -49,7 +52,6 @@ export function App() {
         <ClaimSection
           onClaimSuccess={handleClaimSuccess}
           isConnected={isConnected}
-          onConnectWallet={() => {}}
         />
 
         {/* 3. Refer & Earn Section */}

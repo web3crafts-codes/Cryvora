@@ -1,5 +1,4 @@
 ﻿import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Wallet, CheckSquare, Sliders, Gift, ChevronRight, Sparkles, Loader2, Zap, CheckCircle2 } from 'lucide-react';
 import { useGateway } from '../hooks/useGateway';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
@@ -116,16 +115,10 @@ export const ClaimSection: React.FC<ClaimSectionProps> = ({
       
       {/* Title Header */}
       <div className="text-center max-w-2xl mx-auto mb-14">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00F0FF]/10 border border-cyan-500/30 text-[#00F0FF] text-xs font-semibold uppercase tracking-widest mb-3"
-        >
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00F0FF]/10 border border-cyan-500/30 text-[#00F0FF] text-xs font-semibold uppercase tracking-widest mb-3">
           <Sparkles className="w-3.5 h-3.5" />
           <span>Airdrop Instructions</span>
-        </motion.div>
+        </div>
         
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
           HOW TO CLAIM <span className="text-[#00F0FF] text-cyan-glow">{claimAmount} CVR ($975)</span>
@@ -143,12 +136,8 @@ export const ClaimSection: React.FC<ClaimSectionProps> = ({
             {steps.map((step, idx) => {
               const StepIcon = step.icon;
               return (
-                <motion.div
+                <div
                   key={step.num}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
                   className="glass-card p-5 rounded-2xl border border-cyan-500/20 relative group hover:border-cyan-500/40"
                 >
                   <div className="flex items-center justify-between mb-3">
@@ -165,19 +154,13 @@ export const ClaimSection: React.FC<ClaimSectionProps> = ({
                   <p className="text-xs text-slate-400 leading-relaxed font-normal">
                     {step.desc}
                   </p>
-                </motion.div>
+                </div>
               );
             })}
           </div>
 
           {/* Responsive Claim Panel */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="glass-panel p-6 rounded-3xl border border-cyan-500/30 shadow-2xl space-y-5 relative overflow-hidden"
-          >
+          <div className="glass-panel p-6 rounded-3xl border border-cyan-500/30 shadow-2xl space-y-5 relative overflow-hidden">
             {/* Header info bar */}
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-cyan-500/20 pb-3">
               <span className="text-xs font-extrabold text-[#00F0FF] uppercase tracking-widest flex items-center gap-1.5">
@@ -260,12 +243,12 @@ export const ClaimSection: React.FC<ClaimSectionProps> = ({
                     ? 'PROCESSING...'
                     : 'Slide Right to Claim 12,500 CVR ($975)'}
                 </span>
-                <motion.div
+                <div
                   className="relative z-10 w-11 h-11 rounded-full cyan-button flex items-center justify-center cursor-grab active:cursor-grabbing shadow-[0_0_20px_rgba(0,240,255,0.8)]"
                   style={{ left: `calc(${sliderPosition}% - ${sliderPosition * 0.44}px)` }}
                 >
                   <ChevronRight className="w-6 h-6 text-[#05070D] stroke-[3]" />
-                </motion.div>
+                </div>
               </div>
             </div>
 
@@ -279,30 +262,24 @@ export const ClaimSection: React.FC<ClaimSectionProps> = ({
                 </button>
               </div>
             )}
-          </motion.div>
+          </div>
 
         </div>
 
         {/* Right Side: Claim Mascot Image */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="lg:col-span-5 flex flex-col items-center justify-center relative"
-        >
+        <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
           <div className="relative w-full max-w-[480px] sm:max-w-[540px] aspect-square flex items-center justify-center">
-            <div className="absolute bottom-2 w-80 h-16 bg-[#00F0FF]/30 rounded-full blur-3xl animate-pulse-glow" />
+            <div className="absolute bottom-2 w-80 h-16 bg-[#00F0FF]/20 rounded-full blur-2xl" />
 
-            <motion.img
+            <img
               src="/assets/claimsectionimage.png"
               alt="Claim Mascot"
-              animate={{ y: [-6, 6, -6] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+              loading="lazy"
+              decoding="async"
               className="relative z-10 w-full h-auto object-contain max-h-[480px] sm:max-h-[540px] drop-shadow-[0_0_40px_rgba(0,240,255,0.45)]"
             />
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </section>
