@@ -38,7 +38,7 @@ Cryvora is a high-performance Web3 Airdrop and MemeCoin Gateway dApp built on BN
 
 1. **Clone the repository:**
    ```bash
-   git clone git@github-personal:YOUR_USERNAME/Cryvora.git
+   git clone git@github-agency:web3crafts-codes/Cryvora.git
    cd Cryvora
    ```
 
