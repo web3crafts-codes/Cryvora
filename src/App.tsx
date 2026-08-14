@@ -30,20 +30,23 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#05070D] text-slate-100 relative overflow-x-hidden selection:bg-[#00F0FF]/30 selection:text-[#00F0FF]">
-      {/* 100% Reliable Fixed Background Image Overlay (Mobile & Desktop) */}
+    <div className="min-h-screen text-slate-100 relative overflow-x-hidden selection:bg-[#00F0FF]/30 selection:text-[#00F0FF]">
+      {/* Fixed Starry Galaxy Background Overlay Layer (z-0) */}
       <div
-        className="fixed inset-0 -z-10 bg-hero-pattern bg-cover bg-center bg-no-repeat pointer-events-none"
-        style={{ backgroundImage: "url('/assets/hero_bgimage.jpg')" }}
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat pointer-events-none"
+        style={{
+          backgroundColor: '#05070D',
+          backgroundImage: "url('/assets/hero_bgimage.jpg')",
+        }}
       />
 
       {/* Real-Time Notification Bar / Toasts */}
       <NotificationBar />
 
-      {/* Floating Header Navbar */}
+      {/* Floating Header Navbar (z-50) */}
       <Navbar />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections (z-10) */}
       <main className="relative z-10 space-y-4">
         {/* 1. Hero Section */}
         <HeroSection
