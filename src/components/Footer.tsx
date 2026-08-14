@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
-import { Share2, Send, Disc as Discord, BookOpen, Check } from 'lucide-react';
+﻿import React, { useState } from 'react';
+import { Send, Bot, Check } from 'lucide-react';
+
+const XIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -15,10 +21,9 @@ export const Footer: React.FC = () => {
   };
 
   const socialLinks = [
-    { name: 'X / Twitter', icon: Share2, href: 'https://twitter.com' },
-    { name: 'Telegram', icon: Send, href: 'https://t.me' },
-    { name: 'Discord', icon: Discord, href: 'https://discord.com' },
-    { name: 'Medium', icon: BookOpen, href: 'https://medium.com' },
+    { name: 'X / Twitter', icon: XIcon, href: 'https://x.com/CryvoraCVR' },
+    { name: 'Telegram Channel', icon: Send, href: 'https://t.me/CryvoraCVR' },
+    { name: 'Telegram Airdrop Bot', icon: Bot, href: 'https://t.me/CryvoraAirdropBot' },
   ];
 
   return (
@@ -59,6 +64,7 @@ export const Footer: React.FC = () => {
                     href={s.href}
                     target="_blank"
                     rel="noreferrer"
+                    title={s.name}
                     className="w-9 h-9 rounded-xl bg-[#05070D] border border-cyan-500/20 flex items-center justify-center text-slate-300 hover:text-[#00F0FF] hover:border-cyan-500/60 hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all"
                   >
                     <Icon className="w-4 h-4" />
@@ -80,8 +86,18 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
+                <a href="#referral" className="hover:text-[#00F0FF] transition-colors">
+                  Refer & Earn
+                </a>
+              </li>
+              <li>
+                <a href="#leaderboard" className="hover:text-[#00F0FF] transition-colors">
+                  Leaderboard
+                </a>
+              </li>
+              <li>
                 <a href="#ecosystem" className="hover:text-[#00F0FF] transition-colors">
-                  Tokenomics
+                  Ecosystem & Tokenomics
                 </a>
               </li>
               <li>
@@ -90,18 +106,8 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="#claim" className="hover:text-[#00F0FF] transition-colors">
-                  Rewards
-                </a>
-              </li>
-              <li>
-                <a href="#footer" className="hover:text-[#00F0FF] transition-colors">
-                  Docs & Whitepaper
-                </a>
-              </li>
-              <li>
-                <a href="#footer" className="hover:text-[#00F0FF] transition-colors">
-                  Privacy Policy & Terms
+                <a href="https://t.me/CryvoraAirdropBot" target="_blank" rel="noreferrer" className="hover:text-[#00F0FF] transition-colors text-[#00F0FF] font-semibold">
+                  Telegram Airdrop Bot (@CryvoraAirdropBot)
                 </a>
               </li>
             </ul>
