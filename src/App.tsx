@@ -31,8 +31,11 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-[#05070D] text-slate-100 relative overflow-x-hidden selection:bg-[#00F0FF]/30 selection:text-[#00F0FF]">
-      {/* Reliable Fixed Mobile & Desktop Background Image Overlay */}
-      <div className="fixed inset-0 -z-10 bg-[url('/assets/hero_bgimage.jpg')] bg-cover bg-center bg-no-repeat pointer-events-none" />
+      {/* 100% Reliable Fixed Background Image Overlay (Mobile & Desktop) */}
+      <div
+        className="fixed inset-0 -z-10 bg-hero-pattern bg-cover bg-center bg-no-repeat pointer-events-none"
+        style={{ backgroundImage: "url('/assets/hero_bgimage.jpg')" }}
+      />
 
       {/* Real-Time Notification Bar / Toasts */}
       <NotificationBar />

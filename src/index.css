@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 @layer base {
   :root {
@@ -20,6 +20,10 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
   }
+}
+
+.bg-hero-pattern {
+  background-image: url('/assets/hero_bgimage.jpg');
 }
 
 /* Glassmorphism Design System matching Logo Deep Electric Blue-Cyan Theme */
